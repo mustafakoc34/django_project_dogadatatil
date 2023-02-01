@@ -7,6 +7,9 @@ class Karavanlar(models.Model):
     karavanModeli = models.CharField(("Karavan Modeli"), max_length=200)
     aciklama = models.TextField(("Karavan Detayı"), max_length=200)
     image = models.FileField(("Model Resmi"), upload_to='', max_length=100, null=True)
+
+    class Meta:
+        verbose_name_plural ="Meta Class Denemesi: Karavanlar"
     
 
     def __str__(self):

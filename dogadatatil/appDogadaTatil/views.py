@@ -2,17 +2,22 @@ from django.shortcuts import render, redirect
 from .models import *
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
+from django.db.models import Q
+from django.views.generic import ListView
 
 # Create your views here.
 
 def index(request):
     title ='Anasayfa'
+
+    
     context = {
         "title":title
     }
     return render(request, 'index.html',context)
 
 def karavan(request):
+    
     title= 'Karavan'
     karavanlar = Karavanlar.objects.all()
     context = {
@@ -122,3 +127,16 @@ def registerUser(request):
             context.update({"hata":"Lütfen 2. parolayı tekrar kontrol edin."})
 
     return render(request,'register.html', context)
+
+
+class SearchBar(ListView):
+    model = Karavanlar
+    template_name = "search.html"
+
+    def get_queryset(self):
+        query = self.request.GET.get("ara")
+        object_list = Karavanlar.objects.filter(
+            Q(karavanModeli__icontains = query) | Q(aciklama__icontains = query)
+        )
+        print(object_list)
+        return object_list

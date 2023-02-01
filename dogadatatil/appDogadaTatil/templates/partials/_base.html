@@ -21,7 +21,7 @@
                     <a class="navbar-brand text-primary fs-1 me-3" href="/">LOGO</a>
                     <li class="nav-item">
                         <a class="nav-link fs-3 me-3 {% if 'karavananasayfa' in request.path %} text-primary {% else %} color: limegreen; {% endif %}"
-                            href="/karavananasayfa/">KARAVAN</a>
+                            href="{% url 'karavananasayfa' %}">KARAVAN</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fs-3 me-3 {% if request.path == '/bungalov/' %} text-primary {% else %} color: limegreen; {% endif %}"
@@ -31,10 +31,16 @@
                         <a class="nav-link fs-3 me-3 {% if request.path == '/tents/' %} text-primary {% else %} color: limegreen; {% endif %}"
                             href="/tents/">ÇADIR</a>
                     </li>
+                    
+                
 
                 </ul>
             </div>
             <div class="justify-content-end d-flex">
+                <form class="d-flex me-2" action="/search/" method="get">
+                    {% csrf_token %}
+                    <input class="form-control me-2" type="text" name="ara" placeholder="Ara">
+                </form>
                 
                 {% if request.user.is_authenticated %}
                     <li class="nav-item">
