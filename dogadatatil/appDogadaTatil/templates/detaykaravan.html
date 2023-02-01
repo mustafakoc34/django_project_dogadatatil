@@ -15,8 +15,8 @@
         </div>
       </div>
     </div>
-
     <div class="col-6">
+      {% if request.user.is_authenticated %}
       <h2>Yorum Yap</h2>
       <form method="POST">
         {% csrf_token %}
@@ -34,7 +34,9 @@
         </div>
         <button type="submit" class="btn btn-outline-primary">Paylaş</button>
       </form>
-      
+      {% else %}
+      <h2>Yorum yapabilmek için lütfen giriş yapın</h2>
+      {% endif %}
       <h2>Yorumlar</h2>
       {% for i in comments  %}
       <div class="card mb-4">

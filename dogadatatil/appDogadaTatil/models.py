@@ -7,6 +7,7 @@ class Karavanlar(models.Model):
     title = models.CharField(("Karavan Modeli"), max_length=200)
     description = models.TextField(("Karavan Detayı"), max_length=200)
     image = models.FileField(("Model Resmi"), upload_to='', max_length=100, null=True)
+    
 
     class Meta:
         verbose_name_plural ="Karavan"
@@ -19,6 +20,7 @@ class Bungalov(models.Model):
     title = models.CharField(("Bungalov Modeli"), max_length=200)
     description = models.TextField(("Bungalov Detayı"), max_length=200)
     image = models.FileField(("Model Resmi"), upload_to='', max_length=100, null=True)
+    
 
     class Meta:
         verbose_name_plural ="Bungalov"
@@ -30,6 +32,7 @@ class Tent(models.Model):
     title = models.CharField(("Çadır Modeli"), max_length=50)
     description = models.TextField(("Çadır Hakkında Detaylar"), max_length=200)
     image = models.FileField(("Çadır Resmi"), upload_to='', max_length=100, null=True)
+    
 
     class Meta:
         verbose_name_plural ="Çadır"

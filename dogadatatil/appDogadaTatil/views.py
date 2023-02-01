@@ -140,3 +140,5 @@ class SearchBar(ListView):
         )
         print(object_list)
         return object_list
+    
+    
