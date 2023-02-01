@@ -1,7 +1,7 @@
 from django.db import models
 
 
-# Create your models here.
+# Create your models here.   
 
 class Karavanlar(models.Model):
     title = models.CharField(("Karavan Modeli"), max_length=200)
@@ -39,6 +39,8 @@ class Tent(models.Model):
 
     def __str__(self):
         return self.title
+
+
 
 class Comment(models.Model):
     karavan_category = models.ForeignKey(Karavanlar, verbose_name=("Karavan Modelleri"), blank=True, null=True, on_delete=models.CASCADE)

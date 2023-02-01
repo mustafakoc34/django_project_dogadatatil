@@ -3,7 +3,7 @@ from .models import *
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.db.models import Q
-from django.views.generic import ListView
+from django.views.generic import TemplateView
 
 # Create your views here.
 
@@ -128,17 +128,16 @@ def registerUser(request):
 
     return render(request,'register.html', context)
 
-
-class SearchBar(ListView):
-    model = Karavanlar
+    
+class SearchBar(TemplateView):
     template_name = "search.html"
 
-    def get_queryset(self):
+    def get_context_data(self, **kwargs):
         query = self.request.GET.get("ara")
-        object_list = Karavanlar.objects.filter(
-            Q(title__icontains = query) | Q(description__icontains = query)
-        )
-        print(object_list)
-        return object_list
-    
-    
+        context_data = super().get_context_data(**kwargs)
+        context_data["queryset1"] = Karavanlar.objects.filter(Q(title__icontains = query) | Q(description__icontains = query))
+        context_data["queryset2"] = Bungalov.objects.filter(Q(title__icontains = query) | Q(description__icontains = query))
+        context_data["queryset3"] = Tent.objects.filter(Q(title__icontains = query) | Q(description__icontains = query))
+        
+        print(context_data)
+        return context_data 
