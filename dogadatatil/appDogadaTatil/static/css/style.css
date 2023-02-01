@@ -1,0 +1,65 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: rgb(243, 244, 248);
+    font-size: 16px;
+}
+
+.myNav{
+   
+    background-color: rgb(7, 14, 37);
+    border-bottom: 5px solid limegreen;
+    
+    
+}
+.myNav li{
+    list-style-type:none;
+}
+
+.myNav li a{
+    color: limegreen;
+    
+    
+}
+
+.hero-img{
+    background-image: url("../img/hero-img.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+}
+
+.hero-text{
+    position: absolute;
+    top: 40%;
+    left:10%;
+    color: rgb(28, 28, 29);
+    font-size: xx-large;
+    
+}
+
+.container{
+    margin-top: 150px;
+}
+
+#index-card-1{
+    background-image: url(../img/pexels-linnea-hansen-2330197.jpg);
+    background-position: 50%;
+}
+#index-card-2{
+    background-image: url(../img/pexels-tiffany-bauer-14426618.jpg);
+    background-position: 50%;
+}
+#index-card-3{
+    background-image: url(../img/pexels-tim-gouw-24698.jpg);
+}
+
+
+

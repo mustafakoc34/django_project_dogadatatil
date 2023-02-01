@@ -1,0 +1,19 @@
+{% extends 'partials/_base.html' %}
+{% load static %}
+
+{% block content  %}
+
+<div class="col-8">
+    <div class="card shadow-sm">
+      <img src="{{ detBungalov.image.url }}" alt="">
+      <div class="card-body">
+        <p class="card-text">{{ detBungalov.bungalovModeli}}</p>
+        <p class="card-text">{{ detBungalov.aciklama}}</p>
+        <div class="d-flex justify-content-between align-items-center">
+          
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  {% endblock %}

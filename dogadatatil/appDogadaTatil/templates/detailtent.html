@@ -1,0 +1,23 @@
+{% extends 'partials/_base.html' %}
+{% load static %}
+
+{% block content  %}
+<div class="container">
+  <div class="row">
+    <div class="col-6 mt-5">
+      <div class="card shadow-sm">
+        <img src="{{ detail_tent.image.url }}" alt="">
+        <div class="card-body">
+          <p class="card-text">{{ detail_tent.cadirModeli}}</p>
+          <p class="card-text">{{ detail_tent.aciklama}}</p>
+          <div class="d-flex justify-content-between align-items-center">
+            
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+{% endblock %}

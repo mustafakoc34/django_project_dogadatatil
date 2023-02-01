@@ -1,0 +1,60 @@
+{% extends 'partials/_base.html' %}
+{% load static %}
+
+{% block content  %}
+<div class="container">
+  <div class="row">
+    <div class="col-6 mt-5">
+      <div class="card shadow-sm">
+        <img src="{{ karavan.image.url }}" alt="">
+        <div class="card-body">
+          <p class="card-text">{{ karavan.karavanModeli}}</p>
+          <p class="card-text">{{ karavan.aciklama}}</p>
+          <div class="d-flex justify-content-between align-items-center">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <h2>Yorum Yap</h2>
+      <form method="POST">
+        {% csrf_token %}
+        <div class="input-group mb-3">
+          <span class="input-group-text">İsim</span>
+          <input type="text" class="form-control" name="name" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text">Başlık</span>
+          <input type="text" class="form-control" name="title" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text">Yorum</span>
+          <input type="text" class="form-control" name="text" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        </div>
+        <button type="submit" class="btn btn-outline-primary">Paylaş</button>
+      </form>
+      
+      <h2>Yorumlar</h2>
+      {% for i in comments  %}
+      <div class="card mb-4">
+        <div class="card-body">
+          <h4>Yorum Başlığı: {{i.title}}</h4>
+          <p>Yorum: {{i.text}}</p>
+
+          <div class="d-flex justify-content-between">
+              <p>Yorum Yapan: {{i.name}}</p>
+              <p>Zaman: {{i.date_now}}</p>
+          </div>
+        </div>
+      </div>
+      
+      
+      
+      
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}
