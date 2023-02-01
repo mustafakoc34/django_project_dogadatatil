@@ -4,32 +4,38 @@ from django.db import models
 # Create your models here.
 
 class Karavanlar(models.Model):
-    karavanModeli = models.CharField(("Karavan Modeli"), max_length=200)
-    aciklama = models.TextField(("Karavan Detayı"), max_length=200)
+    title = models.CharField(("Karavan Modeli"), max_length=200)
+    description = models.TextField(("Karavan Detayı"), max_length=200)
     image = models.FileField(("Model Resmi"), upload_to='', max_length=100, null=True)
 
     class Meta:
-        verbose_name_plural ="Meta Class Denemesi: Karavanlar"
+        verbose_name_plural ="Karavan"
     
 
     def __str__(self):
-        return self.karavanModeli
+        return self.title
 
 class Bungalov(models.Model):
-    bungalovModeli = models.CharField(("Bungalov Modeli"), max_length=200)
-    aciklama = models.TextField(("Bungalov Detayı"), max_length=200)
+    title = models.CharField(("Bungalov Modeli"), max_length=200)
+    description = models.TextField(("Bungalov Detayı"), max_length=200)
     image = models.FileField(("Model Resmi"), upload_to='', max_length=100, null=True)
 
+    class Meta:
+        verbose_name_plural ="Bungalov"
+
     def __str__(self):
-        return self.bungalovModeli
+        return self.title
 
 class Tent(models.Model):
-    cadirModeli = models.CharField(("Çadır Modeli"), max_length=50)
-    aciklama = models.TextField(("Çadır Hakkında Detaylar"), max_length=200)
+    title = models.CharField(("Çadır Modeli"), max_length=50)
+    description = models.TextField(("Çadır Hakkında Detaylar"), max_length=200)
     image = models.FileField(("Çadır Resmi"), upload_to='', max_length=100, null=True)
 
+    class Meta:
+        verbose_name_plural ="Çadır"
+
     def __str__(self):
-        return self.cadirModeli
+        return self.title
 
 class Comment(models.Model):
     karavan_category = models.ForeignKey(Karavanlar, verbose_name=("Karavan Modelleri"), blank=True, null=True, on_delete=models.CASCADE)

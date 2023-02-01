@@ -4,7 +4,7 @@ from .models import *
 # Register your models here.
 class CommentAdmin(admin.ModelAdmin):
     list_display = ("name","title","karavan_category")
-    search_fields =("karavan_category__karavanModeli",)
+    search_fields =("karavan_category__title",)
 
 admin.site.register(Karavanlar)
 admin.site.register(Bungalov)

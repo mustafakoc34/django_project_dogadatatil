@@ -28,7 +28,7 @@ def karavan(request):
 
 def detayKaravan(request,id):
     karavan = Karavanlar.objects.get(id = id)
-    title_header = karavan.karavanModeli
+    title_header = karavan.title
     comments = Comment.objects.filter(karavan_category=karavan)
 
     if request.method == "POST":
@@ -57,7 +57,7 @@ def bungalov(request):
 
 def detayBungalov(request, id):
     detBungalov = Bungalov.objects.get(id = id)
-    title = detBungalov.bungalovModeli
+    title = detBungalov.title
     context ={
         "detBungalov": detBungalov,
         "title": title
@@ -75,7 +75,7 @@ def tents(request):
 
 def detailTent(request,id):
     detail_tent = Tent.objects.get(id = id)
-    title = detail_tent.cadirModeli
+    title = detail_tent.title
     context ={
         "detail_tent":detail_tent,
         "title":title
@@ -136,7 +136,7 @@ class SearchBar(ListView):
     def get_queryset(self):
         query = self.request.GET.get("ara")
         object_list = Karavanlar.objects.filter(
-            Q(karavanModeli__icontains = query) | Q(aciklama__icontains = query)
+            Q(title__icontains = query) | Q(description__icontains = query)
         )
         print(object_list)
         return object_list
