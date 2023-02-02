@@ -8,7 +8,6 @@ class Karavanlar(models.Model):
     description = models.TextField(("Karavan Detayı"), max_length=200)
     image = models.FileField(("Model Resmi"), upload_to='', max_length=100, null=True)
     
-
     class Meta:
         verbose_name_plural ="Karavan"
     

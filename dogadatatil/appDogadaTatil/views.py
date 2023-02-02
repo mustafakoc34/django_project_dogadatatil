@@ -9,8 +9,6 @@ from django.views.generic import TemplateView
 
 def index(request):
     title ='Anasayfa'
-
-    
     context = {
         "title":title
     }
@@ -28,11 +26,12 @@ def karavan(request):
 
 def detayKaravan(request,id):
     karavan = Karavanlar.objects.get(id = id)
-    title_header = karavan.title
     comments = Comment.objects.filter(karavan_category=karavan)
 
+    title_header = karavan.title
+
     if request.method == "POST":
-        name2 = request.POST["name"]
+        name2 = request.POST["isim"]
         title2 = request.POST["title"]
         text2 = request.POST["text"]
 
@@ -133,11 +132,13 @@ class SearchBar(TemplateView):
     template_name = "search.html"
 
     def get_context_data(self, **kwargs):
-        query = self.request.GET.get("ara")
-        context_data = super().get_context_data(**kwargs)
-        context_data["queryset1"] = Karavanlar.objects.filter(Q(title__icontains = query) | Q(description__icontains = query))
-        context_data["queryset2"] = Bungalov.objects.filter(Q(title__icontains = query) | Q(description__icontains = query))
-        context_data["queryset3"] = Tent.objects.filter(Q(title__icontains = query) | Q(description__icontains = query))
-        
-        print(context_data)
-        return context_data 
+        button = self.request.GET.get("button")
+        if button == "ara":
+            query = self.request.GET.get("ara")
+            context_data = super().get_context_data(**kwargs)
+            context_data["queryset1"] = Karavanlar.objects.filter(Q(title__icontains = query) | Q(description__icontains = query))
+            context_data["queryset2"] = Bungalov.objects.filter(Q(title__icontains = query) | Q(description__icontains = query))
+            context_data["queryset3"] = Tent.objects.filter(Q(title__icontains = query) | Q(description__icontains = query))
+            
+            print(context_data)
+            return context_data 

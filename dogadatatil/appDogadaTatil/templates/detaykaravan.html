@@ -16,13 +16,14 @@
       </div>
     </div>
     <div class="col-6">
+
       {% if request.user.is_authenticated %}
       <h2>Yorum Yap</h2>
       <form method="POST">
         {% csrf_token %}
         <div class="input-group mb-3">
           <span class="input-group-text">İsim</span>
-          <input type="text" class="form-control" name="name" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+          <input type="text" class="form-control" name="isim" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
         </div>
         <div class="input-group mb-3">
           <span class="input-group-text">Başlık</span>
