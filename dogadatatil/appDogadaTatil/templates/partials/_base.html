@@ -12,76 +12,15 @@
 </head>
 
 <body>
-    <!--navbar start-->
 
-    <nav class="navbar navbar-expand-lg myNav">
-        <div class="container-fluid">
-            <div class="justify-content-start">
-                <ul class="navbar-nav">
-                    <a class="navbar-brand text-primary fs-1 me-3" href="/">LOGO</a>
-                    <li class="nav-item">
-                        <a class="nav-link fs-3 me-3 {% if 'karavananasayfa' in request.path %} text-primary {% else %} color: limegreen; {% endif %}"
-                            href="{% url 'karavananasayfa' %}">KARAVAN</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link fs-3 me-3 {% if request.path == '/bungalov/' %} text-primary {% else %} color: limegreen; {% endif %}"
-                            href="/bungalov/">BUNGALOV</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link fs-3 me-3 {% if request.path == '/tents/' %} text-primary {% else %} color: limegreen; {% endif %}"
-                            href="/tents/">ÇADIR</a>
-                    </li>
-                    
-                
-
-                </ul>
-            </div>
-            <div class="justify-content-end d-flex">
-                <form class="d-flex me-2" action="/search/" method="get">
-                    {% csrf_token %}
-                    <input class="form-control me-2" type="text" name="ara" placeholder="Ara">
-                    <button class="btn btn-outline-primary me-3" type="submit" name="button" value="ara">Ara</button>
-                </form>
-                
-                {% if request.user.is_authenticated %}
-                    <li class="nav-item">
-                        <a class="nav-link fs-3 me-3" href="#">{{request.user}}</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link fs-3 me-3" href="/logout/">Çıkış</a>
-                    </li>
-                {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link fs-3 me-3" href="/login/">Giriş</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link fs-3 me-3" href="/register/">Kayıt Ol</a>
-                    </li>
-                {% endif %}
-            </div>
-        </div>
-    </nav>
-
-    <!--navbar end-->
+    {% include 'partials/_header.html' %}
 
     {% block content %}
 
     {% endblock content %}
 
-    <footer>
+    {% include 'partials/_footer.html' %}
 
-        <footer class="py-3 my-4">
-            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
-            </ul>
-            <p class="text-center text-muted">© 2022 Company, Inc</p>
-        </footer>
-
-    </footer>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
